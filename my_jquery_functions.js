@@ -2,6 +2,7 @@
 
 // Is the dropdown being displayed
 var display = false;
+var active;
 
 $(document).ready(function(){
 	"use strict";
@@ -10,7 +11,12 @@ $(document).ready(function(){
 	// When dropdown class is clicked - reveal the special items underneath it
     $(".dropdown").on({
 		click:function(){
-			hideAllSpecial();
+			// If click on un-active - hide all
+			if(active != null && active != this){
+				hideAllSpecial();
+			}
+			// If click on active or active is null
+			active = this;
 			var items = $(this).find('a.special');
 			setupElements(items);
 			playEffects(items);
