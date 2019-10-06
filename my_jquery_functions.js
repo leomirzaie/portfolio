@@ -6,16 +6,17 @@ var display = false;
 $(document).ready(function(){
 	"use strict";
 	hideAllSpecial();
-	
+
 	// When dropdown class is clicked - reveal the special items underneath it
     $(".dropdown").on({
 		click:function(){
+			hideAllSpecial();
 			var items = $(this).find('a.special');
 			setupElements(items);
 			playEffects(items);
 		}
 	});
-	
+
 	// When shiftRight link is hovered over - shift right
 	$(".shiftRight").on({
 		mouseenter:function(){
@@ -25,7 +26,7 @@ $(document).ready(function(){
 			shiftBack(this);
 		},
 	});
-	
+
 	// When special link is hovered over - shift right
 	$(".special").on({
 		mouseenter:function(){
@@ -35,7 +36,7 @@ $(document).ready(function(){
 			shiftBack(this);
 		},
 	});
-	
+
 });
 
 // Hide all the special class links
@@ -54,7 +55,7 @@ function setupElements(items){
 	if(!display){
 		$(items).each(function(index){
 			$(items[index]).css("top", "-5px");
-		});	
+		});
 	}
 }
 
